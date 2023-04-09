@@ -42,7 +42,7 @@ echo -e "Checking root filesystem\n"
 # Clearing cache 
 if [ "$(ls -A $CACHEPATH)" ]; then 
     echo -e "Apk cache folder is not empty: $CACHEPATH \nRemoving cache...\n"
-    rm $CACHEPATH*
+    rm -rf $CACHEPATH*
 fi
 
 # Remove shell history
