@@ -90,6 +90,7 @@ else
 fi
 
 # Print version from /etc/issue
+cat $ROOTFS/etc/issue
 echo -n "Version in banner: " 
 grep -Eo "v[0-9\.]+" $ROOTFS/etc/issue
 
