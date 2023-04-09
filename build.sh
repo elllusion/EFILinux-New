@@ -90,9 +90,8 @@ else
 fi
 
 # Print version from /etc/issue
-cat $ROOTFS/etc/issue
-echo -n "Version in banner: " 
-grep -Eo "v[0-9\.]+" $ROOTFS/etc/issue
+#echo -n "Version in banner: " 
+#grep -Eo "v[0-9\.]+" $ROOTFS/etc/issue
 
 # Print rootfs uncompressed size
 echo -e "Uncompressed root filesystem size WITHOUT kernel modules: $(du -sh $ROOTFS | cut -f1)\n"
