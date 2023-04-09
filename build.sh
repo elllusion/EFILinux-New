@@ -11,7 +11,12 @@ MODULESPATH="$ROOTFS/lib/modules/"
 DEVURANDOM="$ROOTFS/dev/urandom"
 
 # Kernel variables
-KERNELVERSION="UEFI-alpinelinux"
+VERSION=`sed -n "2,2p" | awk '{print $3}'`
+PATCHLEVEL=`sed -n "3,3p" | awk '{print $3}'`
+SUBLEVEL=`sed -n "4,4p" | awk '{print $3}'`
+EXTRAVERSION=`sed -n "5,5p" | awk '{print $3}'`
+KVERSION="$VERSION.$PATCHLEVEL.$SUBLEVEL$EXTRAVERSION"
+KERNELVERSION="UEFILinux-$KVERSION"
 KERNELPATH="linux"
 export INSTALL_MOD_PATH="../$ROOTFS/"
 
