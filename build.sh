@@ -52,9 +52,13 @@ if [ -f $SHELLHISTORY ]; then
 fi
 
 # Clearing kernel modules folder 
-if [ "$(ls -A $MODULESPATH)" ]; then 
-    echo -e "Kernel modules folder is not empty: $MODULESPATH \nRemoving modules...\n"
-    rm -r $MODULESPATH*
+if [ -d $MODULESPATH ];then
+  if [ "$(ls -A $MODULESPATH)" ]; then 
+      echo -e "Kernel modules folder is not empty: $MODULESPATH \nRemoving modules...\n"
+      rm -r $MODULESPATH*
+  fi
+else
+  mkdir -p $MODULESPATH
 fi
 
 # Removing dev bindings
