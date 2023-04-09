@@ -103,7 +103,7 @@ echo -e "Uncompressed root filesystem size WITHOUT kernel modules: $(du -sh $ROO
 
 echo "----------------------------------------------------"
 echo -e "Copying the kernel configuration file\n"
-make menuconfig
+cp config linux/.config
 
 echo "----------------------------------------------------"
 echo -e "Building kernel mobules using $THREADS threads...\n"
