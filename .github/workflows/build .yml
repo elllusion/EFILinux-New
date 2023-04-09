@@ -30,6 +30,7 @@ jobs:
         run: |
           chmod +x ${PWD}/chroot.sh
           sudo bash ${PWD}/chroot.sh
+          sudo bash ${PWD}/build.sh
         shell: bash
 
       # Runs a set of commands using the runners shell
