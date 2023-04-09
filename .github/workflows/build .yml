@@ -27,7 +27,7 @@ jobs:
       
       - name: install dep
         run: |
-          sed -i "/deb-src/s/# //g" /etc/apt/sources.list
+          sudo sed -i "/deb-src/s/# //g" /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y wget xz-utils make gcc flex bison dpkg-dev bc rsync kmod cpio libssl-dev
           sudo apt-get build-dep -y linux
