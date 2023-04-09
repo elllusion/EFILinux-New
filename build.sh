@@ -71,8 +71,8 @@ fi
 
 # Check if console character file exist
 if [ ! -e $DEVCONSOLE ]; then
-    echo -e "ERROR: Console device does not exist: $DEVCONSOLE \nPlease create device file:  mknod -m 600 $DEVCONSOLE c 5 1"
-    exit 1
+    echo -e "ERROR: Console device does not exist: $DEVCONSOLE \nCreate device ..."
+    sudo mknod -m 600 $DEVCONSOLE c 5 1
 else
     if [ -d $DEVCONSOLE ]; then # Check that console device is not a folder 
         echo -e  "ERROR: Console device is a folder: $DEVCONSOLE \nPlease create device file:  mknod -m 600 $DEVCONSOLE c 5 1"
@@ -81,7 +81,6 @@ else
     if [ -f $DEVCONSOLE ]; then # Check that console device is not a regular file
         echo -e "ERROR: Console device is a regular: $DEVCONSOLE \nPlease create device file:  mknod -m 600 $DEVCONSOLE c 5 1"
     fi
-    sudo mknod -m 600 $DEVCONSOLE c 5 1
 fi
 
 # Print version from /etc/issue
