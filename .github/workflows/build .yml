@@ -25,23 +25,27 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: install dep
+      - name: Install compilation dependencies
         run: |
           sudo sed -i "/deb-src/s/# //g" /etc/apt/sources.list
           sudo apt-get update
           sudo apt-get install -y wget xz-utils make gcc flex bison dpkg-dev bc rsync kmod cpio libssl-dev libunwind-dev
           sudo apt-get build-dep -y linux
 
+      - name: Update git submodule
+        run: |
+          git submodule update --init --recursive
+        shell: bash
+
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Run the chroot script and download the rootfs and kernel configuration files
         run: |
           git submodule update --init --recursive
           sudo bash ${PWD}/chroot.sh
-          sudo bash ${PWD}/build.sh
         shell: bash
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Run compile script
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          sudo bash ${PWD}/build.sh
+        shell: bash
