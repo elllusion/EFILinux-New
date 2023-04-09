@@ -48,6 +48,10 @@ jobs:
           sudo bash ${PWD}/build.sh
         shell: bash
 
+      - name: Zip the Build
+        run: |
+          zip --junk-paths build-artifact EFILinux.efi EFILinux.img
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -66,5 +70,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SECRET }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./EFILinux.efi
-          asset_name: EFILinux.efi
+          asset_path: ./build-artifact.zip
+          asset_name: build-artifact.zip
+          asset_content_type: application/zip
