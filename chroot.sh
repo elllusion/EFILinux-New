@@ -52,6 +52,8 @@ ALPINE_ARCH="x86_64"
 echo "----------------------------------------------------"
 echo -e "Downloading root filesystem\n"
 wget https://dl-cdn.alpinelinux.org/alpine/$ALPINE_VERSION/releases/$ALPINE_ARCH/alpine-minirootfs-$ALPINE_SUBVERSION-$ALPINE_ARCH.tar.gz
+wget https://dl-cdn.alpinelinux.org/alpine/$ALPINE_VERSION/releases/$ALPINE_ARCH/netboot-$ALPINE_SUBVERSION/config-lts
+mv config-lts config
 
 echo "----------------------------------------------------"
 echo -e "Unpacking root filesystem\n"
