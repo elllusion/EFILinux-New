@@ -11,10 +11,10 @@ MODULESPATH="$ROOTFS/lib/modules/"
 DEVURANDOM="$ROOTFS/dev/urandom"
 
 # Kernel variables
-VERSION=`sed -n "2,2p" | awk '{print $3}'`
-PATCHLEVEL=`sed -n "3,3p" | awk '{print $3}'`
-SUBLEVEL=`sed -n "4,4p" | awk '{print $3}'`
-EXTRAVERSION=`sed -n "5,5p" | awk '{print $3}'`
+VERSION=`sed -n "2,2p" linux/Makefile | awk '{print $3}'`
+PATCHLEVEL=`sed -n "3,3p" linux/Makefile | awk '{print $3}'`
+SUBLEVEL=`sed -n "4,4p" linux/Makefile | awk '{print $3}'`
+EXTRAVERSION=`sed -n "5,5p" linux/Makefile | awk '{print $3}'`
 KVERSION="$VERSION.$PATCHLEVEL.$SUBLEVEL$EXTRAVERSION"
 KERNELVERSION="UEFILinux-$KVERSION"
 KERNELPATH="linux"
