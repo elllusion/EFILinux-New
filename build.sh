@@ -70,7 +70,7 @@ fi
 
 
 # Check if console character file exist
-if [ ! -c $DEVCONSOLE];then
+if [ ! -c $DEVCONSOLE ];then
   sudo mknod -m 600 $DEVCONSOLE c 5 1
 else
   if [ ! -e $DEVCONSOLE ]; then
